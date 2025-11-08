@@ -1,0 +1,48 @@
+# === Simulation outputs (VCS / Verdi) ===
+simv*
+csrc/
+ucli.key
+.daidir/
+.vcs/
+.verdi/
+.verdiLog/
+verdiLog/
+*.vpd
+*.fsdb
+*.log
+*.key
+*.out
+*.trn
+
+# === Coverage & reports ===
+urgReport/
+cov_work/
+covhtmlreport/
+*.cov
+*.ucdb
+*.tcf
+
+# === Temporary / generated files ===
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+*.jou
+*.txt
+*.xml
+
+# === Scripts output ===
+output/
+results/
+reports/
+logs/
+
+# === Python / Perl cache ===
+__pycache__/
+*.pyc
+
+# === OS junk ===
+.DS_Store
+Thumbs.db
+desktop.ini
