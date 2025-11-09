@@ -29,7 +29,6 @@ covhtmlreport/
 *.swo
 *~
 *.jou
-*.txt
 *.xml
 
 # === Scripts output ===
