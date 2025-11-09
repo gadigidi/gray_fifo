@@ -1,17 +1,16 @@
 # Gray FIFO Design and Verification Project
 
 ## Overview
-This project implements and verifies a **Gray-coded FIFO (First-In-First-Out)**
-buffer in **SystemVerilog**. It is intended for **educational purposes** to
-practice design and verification concepts.
+This project implements and verifies a Gray-coded FIFO in SystemVerilog.
+It is intended for educational purposes to practice design and verification concepts.
 
 ## Simulation Environment
 All simulation and verification for this project was developed and validated  
-on **EDA Playground**, an online SystemVerilog/UVM environment.  
+on EDA Playground, an online SystemVerilog/UVM environment.  
 
 ## Design Description
-The FIFO is an asynchronous design that uses Gray-coded read and write pointers
-to safely synchronize data transfers between two clock domains.
+The FIFO is an design that uses Gray-coded pointers, read and write, to safely
+synchronize data transfers between two clock domains.
 A two-stage synchronizer is implemented for each pointer to ensure metastability mitigation.
 
 ### Main Features
@@ -23,15 +22,15 @@ A two-stage synchronizer is implemented for each pointer to ensure metastability
 
 ## Project Structure
 ```
-design/      → RTL design files (SystemVerilog)
-tb/          → Testbench and verification files
-documents/   → Diagrams, specifications, and notes
+design/      → RTL design files
+tb/          → Testbench and verification files 
+documents/   → Diagrams and wave examples
 ```
 
 ## Verification Environment
-The verification is written in **SystemVerilog** using a modular testbench architecture.
+The verification is written in SystemVerilog using in UVM methodology.
 The testbench includes:
-- UVM components such as sequncer, driver, interface etc.
+- UVM components such as sequncer, driver, agent, interface etc.
 - Stimulus generation for write and read interfaces
 - Reference model for expected data behavior
 - Scoreboard to compare DUT outputs against the reference
