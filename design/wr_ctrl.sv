@@ -11,12 +11,12 @@ module wr_ctrl (
   wire [3:0] rd_ptr_g_synced;
   wire [3:0] rd_ptr_b;
   wire [3:0] nxt_wr_ptr;
-  reg wr_req_synced_;
+  //reg wr_req_synced_;
   wire overlap;
   reg overlap_dly;
   //wire full;
   reg full_dly;
-  reg wr_en_dly;
+  //reg wr_en_dly;
   
   synchronizer #(.SYNC_WIDTH(4), .SYNC_DLY(2), .RST_VAL(0))
   wr_sync(
@@ -29,12 +29,14 @@ module wr_ctrl (
     .g_addr(rd_ptr_g_synced),
     .b_addr(rd_ptr_b));
   
+  /*
   synchronizer #(.SYNC_WIDTH(1), .SYNC_DLY(2), .RST_VAL(1))
   wr_req_sync(
     .clk(wr_clk),
     .rst_(rst_),
     .data_in(wr_req_),
     .data_synced(wr_req_synced_));
+  */
   
   assign nxt_wr_ptr = wr_ptr_b+1;
   assign overlap = (nxt_wr_ptr == rd_ptr_b);
@@ -43,7 +45,7 @@ module wr_ctrl (
     if (!rst_)
       wr_en <= 'b0;
     else
-      if (wr_req_synced_ == 1'b0 && !full)
+      if (wr_req_ == 1'b0 && !full)
         wr_en <= 'b1;
       else
         wr_en <= 'b0;
@@ -78,13 +80,6 @@ module wr_ctrl (
   b2g_decoder wr_ptr_b2g(
     .b_addr(wr_ptr_b),
     .g_addr(wr_ptr_g));
-  
-  /*always @(posedge wr_clk) begin
-    if (!rst_)
-      wr_en_dly <= 'h0;
-    else
-      wr_en_dly <= wr_en;
-  end*/
 
 endmodule
 

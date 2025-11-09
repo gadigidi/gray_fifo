@@ -28,4 +28,4 @@ module synchronizer #(parameter SYNC_WIDTH=1, parameter SYNC_DLY=1, parameter RS
   assign data_synced = q[SYNC_DLY-1];
  
 endmodule
-	
+

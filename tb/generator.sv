@@ -33,6 +33,8 @@ class mon_transaction extends uvm_sequence_item;
   logic rd_req_;
   logic [3:0] rd_data;
   logic rd_valid;
+  logic full;
+  logic empty;
   
   function new(string path = "mon_transaction");
     super.new(path);
@@ -45,6 +47,8 @@ class mon_transaction extends uvm_sequence_item;
     `uvm_field_int(rd_req_, UVM_DEFAULT)
     `uvm_field_int(rd_data, UVM_DEFAULT)
     `uvm_field_int(rd_valid, UVM_DEFAULT)
+    `uvm_field_int(full, UVM_DEFAULT)
+    `uvm_field_int(empty, UVM_DEFAULT)
   `uvm_object_utils_end
   
   //constraint a_range {a<'h2;}

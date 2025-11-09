@@ -12,7 +12,6 @@ module rd_ctrl (
   wire [3:0] wr_ptr_g_synced;
   wire [3:0] wr_ptr_b;
   wire [3:0] nxt_rd_ptr;
-  reg rd_req_synced_;
   wire overlap;
   reg overlap_dly;
   //wire empty;
@@ -29,27 +28,19 @@ module rd_ctrl (
     .g_addr(wr_ptr_g_synced),
     .b_addr(wr_ptr_b));
   
+  /*
   synchronizer #(.SYNC_WIDTH(1), .SYNC_DLY(2), .RST_VAL(1))
   rd_req_sync(
     .clk(rd_clk),
     .rst_(rst_),
     .data_in(rd_req_),
     .data_synced(rd_req_synced_));
-  
+  */
   assign nxt_rd_ptr = rd_ptr_b+1;
   assign overlap = (nxt_rd_ptr == wr_ptr_b);
   
   always @(posedge rd_clk) begin
-    if (!rst_)
-      rd_en <= 'b0;
-    else
-      if (rd_req_synced_ == 1'b0 && !empty)
-        rd_en <= 'b1;
-      else
-        rd_en <= 'b0;
-  end
-  always @(posedge rd_clk) begin
-    if (!rst_)
+	if (!rst_)
       rd_en <= 'b0;
     else
       if (rd_req_ == 1'b0 && !empty)

@@ -19,11 +19,9 @@ A two-stage synchronizer is implemented for each pointer to ensure metastability
 - Full and empty flag generation.
 
 ## Project Structure
-```
 design/      → RTL design files
 tb/          → Testbench and verification files
 documents/   → Diagrams and wave examples
-```
 
 ## Verification Environment
 The verification is written in SystemVerilog using UVM methodology.
@@ -33,7 +31,8 @@ The testbench includes:
 - Reference model for expected data behavior.
 - Scoreboard to compare DUT outputs against the reference.
 
-## Future Improvements
+## Future Improvments
+- Fix verification issue: DUT non-deterministic behavior.
 - Implement coverage metrics for verification completeness.
 - Add diagrams for the env structure.
 

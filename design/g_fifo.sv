@@ -58,6 +58,8 @@ module g_fifo(
   
   assign gif.rd_valid = rd_valid;
   assign gif.rd_data = rd_data;
+  assign gif.full = full;
+  assign gif.empty = empty;
    
 endmodule
 

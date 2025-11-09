@@ -7,6 +7,8 @@ interface gfifo_if ();
   logic rd_req_;
   logic [3:0] rd_data;
   logic rd_valid;
+  logic full;
+  logic empty;
   
   modport DUT(
     input wr_clk,
@@ -16,7 +18,9 @@ interface gfifo_if ();
     input wr_req_,
     input rd_req_,
     output rd_data,
-    output rd_valid);
+    output rd_valid,
+    output full,
+    output empty);
   
   modport DRVR(
     input wr_clk,
@@ -26,7 +30,9 @@ interface gfifo_if ();
     output wr_req_,
     output rd_req_,
     input rd_data,
-    input rd_valid);
+    input rd_valid,
+    input full,
+    input empty);
   
   modport MON(
     input wr_clk,
@@ -36,7 +42,9 @@ interface gfifo_if ();
     input wr_req_,
     input rd_req_,
     input rd_data,
-    input rd_valid);
+    input rd_valid,
+    input full,
+    input empty);
   
 endinterface
 

@@ -1,6 +1,5 @@
 `include "uvm_macros.svh"
 import uvm_pkg::*;
-
 ///////////// monitor /////////////
 class monitor extends uvm_monitor;
   `uvm_component_utils(monitor)
@@ -33,6 +32,7 @@ class monitor extends uvm_monitor;
         t.wr0_rd1 = 'b0;
         t.wr_data = gif.MON.wr_data;
         t.wr_req_ = gif.MON.wr_req_;
+        t.full = gif.MON.full;
         $display("Time is %0t. write transaction", $time);
         t.print(uvm_default_line_printer);
         `uvm_info("monitor", "Write transaction sent to Scbd", UVM_HIGH)
@@ -44,6 +44,7 @@ class monitor extends uvm_monitor;
         t.rd_req_ = gif.MON.rd_req_;
         t.rd_data = gif.MON.rd_data;
         t.rd_valid = gif.MON.rd_valid;
+        t.empty = gif.MON.empty;
         $display("Time is %0t. read transaction", $time);
         t.print(uvm_default_line_printer);
         `uvm_info("monitor", "Read transaction sent to Scbd", UVM_HIGH)

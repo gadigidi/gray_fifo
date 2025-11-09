@@ -1,3 +1,6 @@
+`include "uvm_macros.svh"
+import uvm_pkg::*;
+
 ///////////// agent /////////////
 class agent extends uvm_agent;
   `uvm_component_utils(agent)
