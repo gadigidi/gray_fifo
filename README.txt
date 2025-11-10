@@ -5,7 +5,7 @@ This project implements and verifies a gray-coded FIFO.
 It is intended for educational purposes to practice design and verification concepts.
 
 ## Simulation Environment
-All simulation and verification for this project was developed and validated  
+All simulation and verification for this project was developed and simulated  
 on EDA Playground, an online SystemVerilog/UVM environment.  
 
 ## Design Description
@@ -26,15 +26,17 @@ documents/   → Diagrams and wave examples
 ## Verification Environment
 The verification is written in SystemVerilog using UVM methodology.
 The testbench includes:
-- UVM components such as sequncer, driver, agent, interface etc.
+- UVM components such as sequencer, driver, agent, interface etc.
 - Stimulus generation for write and read interfaces.
 - Reference model for expected data behavior.
 - Scoreboard to compare DUT outputs against the reference.
 
-## Future Improvments
-- Solve verification issue: DUT non-deterministic behavior.
-- Implement coverage metrics for verification completeness.
-- Add diagrams for the env structure.
+## Future Improvements
+- Resolve verification issue: DUT non-deterministic behavior.
+- Split the current agent (which wraps separate driver/monitor/sequencer components 
+  for the write and read sides) into 2 independent agents.
+- Implement functional coverage metrics for verification completeness.
+- Add block and architecture diagrams to illustrate the environment structure.
 
 ## Author
 Gadi Teicher
