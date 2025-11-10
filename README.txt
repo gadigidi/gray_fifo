@@ -32,7 +32,7 @@ The testbench includes:
 - Scoreboard to compare DUT outputs against the reference.
 
 ## Future Improvments
-- Fix verification issue: DUT non-deterministic behavior.
+- Solve verification issue: DUT non-deterministic behavior.
 - Implement coverage metrics for verification completeness.
 - Add diagrams for the env structure.
 
