@@ -25,8 +25,8 @@ class test extends uvm_test;
     phase.raise_objection(this);
     `uvm_info("test", "Objection raised", UVM_LOW)
     fork
-      wr_gen.start(en.agnt.wr_seqr);
-      rd_gen.start(en.agnt.rd_seqr);
+      wr_gen.start(en.wr_agnt.wr_seqr);
+      rd_gen.start(en.rd_agnt.rd_seqr);
     join
     `uvm_info("test", "gen.start done", UVM_LOW)
     #100;
