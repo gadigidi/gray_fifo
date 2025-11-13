@@ -71,7 +71,6 @@ class read_driver extends uvm_driver#(drv_transaction);
   
   virtual gfifo_if gif;
   drv_transaction t;
-  //bit wr0_rd1;
   
   function new(string path = "rd_drvr", uvm_component parent = null);
     super.new(path, parent);

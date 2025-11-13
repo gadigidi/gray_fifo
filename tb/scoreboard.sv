@@ -6,11 +6,7 @@ class scoreboard extends uvm_scoreboard;
   `uvm_component_utils(scoreboard)
   
   bit[3:0] mem_queue[$:15];
-  //bit[3:0] wr_queue[$:2] = {'h0, 'h0, 'h0};
   bit[3:0] rd_queue[$:15]; //no need for this FIXME
-  
-  //bit [2:0] wr_cnt;
-  //bit [2:0] rd_cnt;
   
   mon_transaction t;
   uvm_analysis_imp #(mon_transaction, scoreboard) reciver;
@@ -42,12 +38,8 @@ class scoreboard extends uvm_scoreboard;
     //wr pkt operations
     if (t.wr0_rd1 == 0) begin
       `uvm_info("scoreboard", "write transaction recieved", UVM_LOW)
-      //wr_data = wr_queue.pop_front();
       wr_data = t.wr_data;
-      //wr_queue.push_back(t.wr_data);
       wr2q = (t.wr_req_ == 1'b0);
-      //wr_cnt = (wr_cnt>>1);
-      //if (t.wr_req_ == 1'b0) wr_cnt[2] = 1'b1;
       if (wr2q == 1'b1) begin
         shadow_write(wr_data);
         `uvm_info("scoreboard", "Shadow Write transaction aplied", UVM_LOW)
@@ -57,8 +49,6 @@ class scoreboard extends uvm_scoreboard;
     //rd pkt operations
     if (t.wr0_rd1 == 1) begin
       `uvm_info("scoreboard", "read transaction recieved", UVM_LOW)
-      //rd_q = rd_cnt[0];
-      //rd_cnt = (rd_cnt>>1);
       rd_q = (t.rd_req_ == 1'b0);
       //if (t.rd_req_ == 1'b0) rd_cnt[2] = 1'b1;
       if (rd_q == 1'b1) begin
@@ -76,9 +66,8 @@ class scoreboard extends uvm_scoreboard;
     end
   endfunction
   
-  function shadow_write(bit[3:0] data);
+  function void shadow_write(bit[3:0] data);
     if (mem_queue.size() != 16) begin
-      tb.moishi = 1'b0;
       mem_queue.push_back(data);
       `uvm_info("scoreboard", $sformatf("At %0t: queue size=%0d. written data to queue = %0d", $time(), mem_queue.size(), data), UVM_LOW)
     end
@@ -86,7 +75,6 @@ class scoreboard extends uvm_scoreboard;
       `uvm_info("scoreboard", $sformatf("At %0t: queue if full", $time()) ,UVM_LOW)
     end
     if (mem_queue.size() == 16 && t.full==1'b1) begin
-      tb.moishi = 1'b1;
       mem_queue.pop_back();
       `uvm_info("scoreboard", $sformatf("At %0t: data was deleted from queue", $time()) ,UVM_LOW)
     end
@@ -109,7 +97,7 @@ class scoreboard extends uvm_scoreboard;
     return {valid, data};
   endfunction
   
-  function rd_compare(bit[3:0] data1, bit[3:0] data2);
+  function void rd_compare(bit[3:0] data1, bit[3:0] data2);
     if (data1 == data2)
       `uvm_info("scoreboard", "rd_data comparison passed", UVM_LOW)
     else

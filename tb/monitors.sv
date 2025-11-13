@@ -8,7 +8,6 @@ class write_monitor extends uvm_monitor;
   virtual gfifo_if gif;
   mon_transaction t;
   uvm_analysis_port #(mon_transaction) sender;
-  //bit wr0_rd1;
   
   function new(string path = "wr_mon", uvm_component parent = null);
     super.new(path, parent);
@@ -48,7 +47,6 @@ class read_monitor extends uvm_monitor;
   virtual gfifo_if gif;
   mon_transaction t;
   uvm_analysis_port #(mon_transaction) sender;
-  //bit wr0_rd1;
   
   function new(string path = "rd_mon", uvm_component parent = null);
     super.new(path, parent);

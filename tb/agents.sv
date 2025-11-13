@@ -18,9 +18,7 @@ class write_agent extends uvm_agent;
     super.build_phase(phase);
     `uvm_info("wr_agent", "Build phase started", UVM_LOW)
     wr_drvr = write_driver::type_id::create("wr_drvr", this);
-    //wr_drvr.wr0_rd1 = 1'b0;
     wr_mon = write_monitor::type_id::create("wr_mon", this);
-    //write_mon.wr0_rd1 = 1'b0;
     wr_seqr = uvm_sequencer#(drv_transaction)::type_id::create("wr_seqr", this);
   endfunction
   
@@ -49,9 +47,7 @@ class read_agent extends uvm_agent;
     super.build_phase(phase);
     `uvm_info("rd_agent", "Build phase started", UVM_LOW)
     rd_drvr = read_driver::type_id::create("rd_drvr", this);
-    //rd_drvr.wr0_rd1 = 1'b0;
     rd_mon = read_monitor::type_id::create("rd_mon", this);
-    //read_mon.wr0_rd1 = 1'b0;
     rd_seqr = uvm_sequencer#(drv_transaction)::type_id::create("rd_seqr", this);
   endfunction
   
