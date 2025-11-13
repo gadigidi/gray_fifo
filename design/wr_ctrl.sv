@@ -11,12 +11,9 @@ module wr_ctrl (
   wire [3:0] rd_ptr_g_synced;
   wire [3:0] rd_ptr_b;
   wire [3:0] nxt_wr_ptr;
-  //reg wr_req_synced_;
   wire overlap;
   reg overlap_dly;
-  //wire full;
   reg full_dly;
-  //reg wr_en_dly;
   
   synchronizer #(.SYNC_WIDTH(4), .SYNC_DLY(2), .RST_VAL(0))
   wr_sync(

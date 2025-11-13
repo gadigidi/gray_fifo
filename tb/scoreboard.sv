@@ -50,7 +50,6 @@ class scoreboard extends uvm_scoreboard;
     if (t.wr0_rd1 == 1) begin
       `uvm_info("scoreboard", "read transaction recieved", UVM_LOW)
       rd_q = (t.rd_req_ == 1'b0);
-      //if (t.rd_req_ == 1'b0) rd_cnt[2] = 1'b1;
       if (rd_q == 1'b1) begin
         {rd_valid, rd_data} = shadow_read();
         if (rd_valid) begin

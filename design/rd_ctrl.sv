@@ -14,7 +14,6 @@ module rd_ctrl (
   wire [3:0] nxt_rd_ptr;
   wire overlap;
   reg overlap_dly;
-  //wire empty;
   reg empty_dly;
   
   synchronizer #(.SYNC_WIDTH(4), .SYNC_DLY(2), .RST_VAL(1))
