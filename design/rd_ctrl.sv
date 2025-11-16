@@ -39,7 +39,7 @@ module rd_ctrl (
   assign overlap = (nxt_rd_ptr == wr_ptr_b);
   
   always @(posedge rd_clk) begin
-	if (!rst_)
+  if (!rst_)
       rd_en <= 'b0;
     else
       if (rd_req_ == 1'b0 && !empty)
