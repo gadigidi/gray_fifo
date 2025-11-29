@@ -34,7 +34,7 @@ The testbench includes:
 
 ## Future Improvements
 - Resolve verification issue: DUT non-deterministic behavior.
-- Implement functional coverage metrics for verification completeness.
+- Implement more functional coverage for verification completeness.
 - Add V-plan document.
 
 ## Author
